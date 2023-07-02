@@ -100,8 +100,8 @@ public class PricingServiceTest {
 	
 	//Test to verify for movie start time discount at 4PM (edge case)
 	@Test
-	public void calculateFinalTicketPrice_MovieStartTimeAt15DiscountApplicable_DiscountApplied() throws Exception {    	
-		showing.setShowStartTime(LocalDateTime.of(LocalDate.now(), LocalTime.of(15, 0)));
+	public void calculateFinalTicketPrice_MovieStartTimeAt4DiscountApplicable_DiscountApplied() throws Exception {    	
+		showing.setShowStartTime(LocalDateTime.of(LocalDate.now(), LocalTime.of(16, 0)));
 		BigDecimal actualTicketAmount = BigDecimal.valueOf(16.5);
 		BigDecimal calculatedTicketPrice = pricingService.calculateFinalTicketPrice(showing, 2).getTotalPrice();;
     	assertTrue(actualTicketAmount.compareTo(calculatedTicketPrice) == 0);
