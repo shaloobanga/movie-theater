@@ -14,8 +14,8 @@ import com.jpmc.theater.service.ReservationService;
  * TheatherController is responsible for processing REST POST request to create Reservation
  */
 @RestController
-public class TheatherController {
-	private Logger logger = LoggerFactory.getLogger(TheatherController.class);
+public class TheaterController {
+	private Logger logger = LoggerFactory.getLogger(TheaterController.class);
 	
 	@Autowired
 	private ReservationService reservationService;

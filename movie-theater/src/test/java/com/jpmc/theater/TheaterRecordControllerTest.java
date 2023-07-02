@@ -23,7 +23,7 @@ import java.time.LocalTime;
 import static org.hamcrest.Matchers.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jpmc.theater.controller.TheatherController;
+import com.jpmc.theater.controller.TheaterController;
 import com.jpmc.theater.model.Customer;
 import com.jpmc.theater.model.Movie;
 import com.jpmc.theater.model.Payment;
@@ -32,7 +32,7 @@ import com.jpmc.theater.model.Showing;
 import com.jpmc.theater.repository.PaymentRepository;
 import com.jpmc.theater.repository.ReservationRepository;
 
-@WebMvcTest(TheatherController.class)
+@WebMvcTest(TheaterController.class)
 public class TheaterRecordControllerTest {
 	@Autowired
 	MockMvc mockMvc;
