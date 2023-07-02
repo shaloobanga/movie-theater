@@ -1,4 +1,4 @@
-package com.jpmc.theater.config;
+package com.jpmc.theater.util;
 
 public class TheaterConstants {
 	public static final String SPACE = " ";

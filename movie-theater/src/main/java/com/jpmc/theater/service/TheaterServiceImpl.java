@@ -1,5 +1,7 @@
 package com.jpmc.theater.service;
 
+import static com.jpmc.theater.util.TheaterConstants.*;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
@@ -11,10 +13,9 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jomc.theater.util.LocalDateProvider;
 import com.jpmc.theater.model.Showing;
 import com.jpmc.theater.model.Theater;
-import static com.jpmc.theater.config.TheaterConstants.*;
+import com.jpmc.theater.util.LocalDateProvider;
 
 @Component
 public class TheaterServiceImpl  implements TheaterService {
