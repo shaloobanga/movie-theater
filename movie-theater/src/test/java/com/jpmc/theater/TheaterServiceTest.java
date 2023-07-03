@@ -16,7 +16,12 @@ import com.jpmc.theater.model.Movie;
 import com.jpmc.theater.model.Showing;
 import com.jpmc.theater.model.Theater;
 import com.jpmc.theater.service.TheaterService;
-
+/*This test class is calling printScheduleInTextFormat and printScheduleInJsonFormat on TheaterService.
+ * It is not testing much currently because Service is printing in logs.
+ * One way to test this functionality is to read the log file and check if specific test in printed in the logs
+ * Another way is to expose a rest API to return the list of Showing and client side code handles the printing
+ * There could be some other better way.
+ */
 @SpringBootTest
 public class TheaterServiceTest {
 	@Autowired
@@ -35,12 +40,12 @@ public class TheaterServiceTest {
 		theater = new Theater(1L, List.of(showing1,showing2));
 	}	
 	
+	
 	@Test
 	public void testPrintScheduleInTextFormat() {
 		theaterService.printScheduleInTextFormat(theater);
 	}
 	
-
 	@Test
 	public void testPrintScheduleInJsonFormat() {
 		theaterService.printScheduleInJsonFormat(theater);
