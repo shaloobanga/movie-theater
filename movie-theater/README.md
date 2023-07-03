@@ -27,6 +27,8 @@ Movie-Theater is a Spring Boot application and use H2 in memory database.
 # Instruction
 
 'mvn clean install' will build the application and run the tests. 
+Please note you will have to do cd movie-theater after you clone before running 'mvn clean install'
+
 Application can be started using one of the following commands
 
 * ./mvnw spring-boot:run 
