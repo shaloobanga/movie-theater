@@ -49,30 +49,30 @@ public class ReservationServiceTest {
 		customer = getCustomer();
 		movie = getMovie();
 		showing = getShowing(movie);
-	 }
-	 
-	 @Test
-	 public void testReserveTickets_CreateNewReservationObject_ReturnsNewOject() {
-    	BigDecimal actualTicketPrice = BigDecimal.valueOf(11);
-    	Reservation reservation = new Reservation();
-    	reservation.setCustomer(customer);
-    	reservation.setShowing(showing);
-    	reservation.setAudienceCount(1);
-    	reservatiomRepository.save(reservation);
-    	reservation = reservationService.reserveTickets(reservation);    	
-    	assertTrue(actualTicketPrice.compareTo(reservation.getPayment().getTotalPrice()) == 0);
-    	assertTrue(reservation.getId()!=null);
 	 }	 
+	  
+	 /*
+	  * Test end to end flow by creating Customer, Showing and Reservation entity using their respective Repository classes
+	  * Calls  reservationService.reserveTickets to create new Reservation object which in turns call PricingService to calculate the final discount 
+	  * Tests if Reservation and Payment entity were saved successfully and discount was calculated correctly
+	  * */
 	 
 	 @Test
-	 public void testReserveTickets__CalculateFinalTicketPriceAfterDiscount_ReturnsFinalPrice() {
+	 public void testReserveTickets__CreateReservationAndCalculateFinalTicketPrice_ReturnsReservationWithPayment() {
     	BigDecimal actualTicketPrice = BigDecimal.valueOf(11);
     	Reservation reservation = new Reservation();
     	reservation.setCustomer(customer);
     	reservation.setShowing(showing);
     	reservation.setAudienceCount(1);
     	reservatiomRepository.save(reservation);
-    	reservation = reservationService.reserveTickets(reservation);    	
+    	reservation = reservationService.reserveTickets(reservation);  
+    	
+    	//Verify Reservation entity is created successfully
+    	assertTrue(reservation.getId()!=null);
+    	
+    	//Verify Payment entity is created successfully
+    	assertTrue(reservation.getPayment().getId()!=null);
+    	//Verify FinalPrice after applying discount and audience count is calculated successfully
     	assertTrue(actualTicketPrice.compareTo(reservation.getPayment().getTotalPrice()) == 0);    
 	 }	 
 	    
@@ -84,7 +84,7 @@ public class ReservationServiceTest {
     	return customer;
 	 }
 	    
-    private Movie getMovie() {
+	 private Movie getMovie() {
     	Movie movie = new Movie();
     	movie.setSpecial(false);
     	movie.setRunningTime(Duration.ofMinutes(85));
@@ -94,7 +94,7 @@ public class ReservationServiceTest {
     	return movie;    	
     }
 	    
-    private Showing getShowing(Movie movie) {
+	 private Showing getShowing(Movie movie) {
     	Showing showing = new Showing();
     	showing.setMovie(movie);
     	showing.setSequenceOfTheDay(5);

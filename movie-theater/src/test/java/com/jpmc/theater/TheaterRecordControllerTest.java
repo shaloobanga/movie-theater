@@ -31,17 +31,21 @@ import com.jpmc.theater.model.Reservation;
 import com.jpmc.theater.model.Showing;
 import com.jpmc.theater.repository.PaymentRepository;
 import com.jpmc.theater.repository.ReservationRepository;
-
+/*
+ * @WebMvcTest to create application context with limited number of beans required to test web controller
+ */
 @WebMvcTest(TheaterController.class)
 public class TheaterRecordControllerTest {
+	//To simulate HTTP request
 	@Autowired
 	MockMvc mockMvc;
 	 
     @Autowired
     ObjectMapper mapper;
-	    
+    
+    //Mock reservationRepository
 	@MockBean
-	ReservationRepository reservationRecordRepository;
+	ReservationRepository reservationRepository;
 	
 	@MockBean
 	PaymentRepository paymentRepository;
@@ -61,19 +65,22 @@ public class TheaterRecordControllerTest {
 		reservation = new Reservation(1L,customer, showing, 1, payment);
 	}	
 	
+	 /* Verify controller is listening to /reserveTickets HTTP request.
+ 		Calculated total Price is 8.8 as special discount is applied
+ 		Uses Hamcrest matchers (notNullValue and is) for verifying the returned values **/	
 	 @Test
-	 public void createRecordTest() throws Exception {
-		 when(reservationRecordRepository.save(reservation)).thenReturn(reservation);
+	 public void testReserveTicketsPostRequest() throws Exception {
+		 when(reservationRepository.save(reservation)).thenReturn(reservation);
 		 when(paymentRepository.save(any())).thenReturn(payment);
+		
 		 MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/reserveTickets")
 		            .contentType(MediaType.APPLICATION_JSON)
 		            .accept(MediaType.APPLICATION_JSON)
-		            .content(this.mapper.writeValueAsString(reservation));
-		 
-		 //Total Price is 8.8 as special discount is applied
+		            .content(this.mapper.writeValueAsString(reservation));		 
+			 	
 		 mockMvc.perform(mockRequest)
 		            .andExpect(status().isOk())
-		            .andExpect(jsonPath("$", notNullValue()))
+		            .andExpect(jsonPath("$", notNullValue()))		      
 		            .andExpect(jsonPath("$.payment.totalPrice", is(8.8)));
 	 }
 }

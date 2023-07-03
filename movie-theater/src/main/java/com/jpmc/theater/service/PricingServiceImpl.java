@@ -33,7 +33,7 @@ public class PricingServiceImpl implements  PricingService {
 	}
 	
 	/**
-	 * 	This method calculates the final ticket price after applying the biggest applicable discount
+	 * 	This method calculates the final ticket price after applying the biggest applicable discount and audienceCount
 	 * @param showing
 	 * @param audianceCount
 	 * @return Payment object with final ticket price
