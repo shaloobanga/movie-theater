@@ -25,9 +25,9 @@ Movie-Theater is a Spring Boot application and use H2 in memory database.
 * System can display movie schedule with simple text format and JSON format
 
 # Instruction
-'mvn clean install' will build the application and run the tests
 
-Application can be started using one of the below commands
+'mvn clean install' will build the application and run the tests. 
+Application can be started using one of the following commands
 
-./mvnw spring-boot:run
-java -jar target/movie-theater-1.0.1-RELEASE.jar
+* ./mvnw spring-boot:run 
+* java -jar target/movie-theater-1.0.1-RELEASE.jar
