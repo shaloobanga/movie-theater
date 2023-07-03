@@ -1,13 +1,13 @@
 # Introduction
-Movie-Theater is a Spring Boot application and using H2 in memory database.
+Movie-Theater is a Spring Boot application and use H2 in memory database.
 
 * MovieTheaterApplication is the main class and is annotated with @SpringBootApplication.
-* TheatherController provides a REST API interface to reserve tickets which uses ReservationService to reserve the tickets.
-* Reservation service uses Java Persistence API (ResevationRepository) to create new Reservations.
+* TheatherController provides a REST API interface to reserve tickets which calls ReservationService.
 * Reservation service  calls PricingService to calculate the applicable discount and create Payment entities.
-* TheaterService have methods to display Showings in Simple Text format and JSON format.
-* Discount related configurations are defined in TheaterConfig which are injected by Spring and can be changes without rebuilding or re-deploying the application 
-* Various tests are in src/test folder some of them are using Mockito to mock the services. @SpringBootTest and @WebMvcTest are used    to create the Spring Context and inject the components.
+* Reservation service uses Java Persistence API (ResevationRepository) to create new Reservations.
+* TheaterService interface exposes methods to display showings in Simple Text format and JSON format.
+* Discount related configurations are defined in TheaterConfig. Configs are injected by Spring and can be changed without rebuilding or re-deploying the application 
+* src/test folder contains testcases that use Spring and Mocito framework to test the functionality.  @SpringBootTest and @WebMvcTest are used to create the Spring Context and inject the components.
 
 ## `movie-theater`
 
