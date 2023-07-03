@@ -159,7 +159,7 @@ public class PricingServiceTest {
 	
 	//Test to verify max discount is applied when movie is first in sequence, special and movie start time is between 11am-4pm
 	@Test
-	public void calculateFinalTicketPrice_FirstInSeqAndSpecialDiscountAndMovieStartTimeDiscountApplicable_MaxFirstInSeqDiscountApplied() throws Exception { 
+	public void calculateFinalTicketPrice_FirstInSeqAndSpecialAndMovieStartTimeDiscountApplicable_MaxFirstInSeqDiscountApplied() throws Exception { 
 		showing.setSequenceOfTheDay(1);		
 		movie.setSpecial(true);
 		showing.setShowStartTime(LocalDateTime.of(LocalDate.now(), LocalTime.of(13, 0)));
@@ -168,9 +168,9 @@ public class PricingServiceTest {
 		BigDecimal calculatedTicketPrice = pricingService.calculateFinalTicketPrice(showing, 2).getTotalPrice();;
     	assertTrue(actualTicketAmount.compareTo(calculatedTicketPrice) == 0);
     }
-	//Test to verify max discount is applied when movie is second in sequence special and movie start time is between 11am-4pm
+	//Test to verify max discount is applied when movie is second in sequence ,special and movie start time is between 11am-4pm
 	@Test
-	public void calculateFinalTicketPrice_SecondInSeqAndSpecialDiscountAndMovieStartTimeDiscountApplicable_MaxMovieStartTimeDiscountApplied() throws Exception { 
+	public void calculateFinalTicketPrice_SecondInSeqAndSpecialAndMovieStartTimeDiscountApplicable_MaxMovieStartTimeDiscountApplied() throws Exception { 
 		showing.setSequenceOfTheDay(2);		
 		movie.setSpecial(true);
 		showing.setShowStartTime(LocalDateTime.of(LocalDate.now(), LocalTime.of(13, 0)));
