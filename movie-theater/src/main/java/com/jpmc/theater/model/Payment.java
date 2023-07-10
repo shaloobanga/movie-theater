@@ -1,7 +1,6 @@
 package com.jpmc.theater.model;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,11 +30,6 @@ public class Payment {
 	
 	private BigDecimal totalPrice;
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, totalPrice);
-	}
-	
 	public Payment(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
 	}

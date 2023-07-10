@@ -1,7 +1,6 @@
 package com.jpmc.theater.model;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,30 +34,6 @@ public class Showing {
 	private int sequenceOfTheDay;
 		
 	private LocalDateTime showStartTime;
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, movie, sequenceOfTheDay, showStartTime);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Showing other = (Showing) obj;
-		return Objects.equals(id, other.id) && Objects.equals(movie, other.movie)
-				&& sequenceOfTheDay == other.sequenceOfTheDay && Objects.equals(showStartTime, other.showStartTime);
-	}
-
-	@Override
-	public String toString() {
-		return "Showing [id=" + id + ", movie=" + movie + ", sequenceOfTheDay=" + sequenceOfTheDay + ", showStartTime="
-				+ showStartTime + "]";
-	}
-  		
+	 		
 	
 }
